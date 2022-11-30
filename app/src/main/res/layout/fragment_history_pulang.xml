@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    tools:context=".fragment.history.HistoryPulangFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            <ImageView
+                android:id="@+id/back_home_history_pulang"
+                android:layout_width="40dp"
+                android:layout_height="35dp"/>
+        </androidx.appcompat.widget.Toolbar>
+        <LinearLayout
+            android:id="@+id/line_hide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tanggalpulanghis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tanggal"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:id="@+id/waktupulanghis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/waktu"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    />
+            </LinearLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilepulangImagehist"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/profile"/>
+            <TextView
+                android:id="@+id/namapulanghis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/namakaryawan"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/lokaspulanghis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lokasikaryawan"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/statuspulanghis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/status_karyawan"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>

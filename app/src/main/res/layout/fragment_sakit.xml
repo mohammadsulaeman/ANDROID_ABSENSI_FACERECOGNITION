@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mapbox="http://schemas.android.com/tools"
+    android:background="@color/light_gray"
+    tools:context=".absen.SakitFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/imageheader"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:padding="10dp"
+            android:gravity="center_horizontal"
+            android:background="@color/colorgradient">
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:id="@+id/imagelogo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/logo"
+                    android:layout_gravity="center"
+                    app:tint="@color/white"
+                    android:padding="2dp"/>
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center_vertical"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imagelogo"/>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/apppt"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/header"/>
+        </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageheader">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <!--foto profile-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:gravity="center"
+                                android:background="@drawable/round_edittext_background"
+                                android:backgroundTint="@color/light_ferozi"
+                                android:text="@string/sakit_detail"
+                                android:textSize="18dp" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/round_edittext_background">
+
+                                <ImageView
+                                    android:id="@+id/fotosakit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/image_placeholder"
+                                    />
+                            </RelativeLayout>
+                        </LinearLayout>
+                        <!--personal detail-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:gravity="center"
+                                android:background="@drawable/round_edittext_background"
+                                android:backgroundTint="@color/light_ferozi"
+                                android:text="@string/sakitdata_detail"
+                                android:textSize="18dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/round_edittext_background">
+
+                                <ImageView
+                                    android:id="@+id/profile"
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginTop="10dp"
+                                    android:textAlignment="center"
+                                    android:src="@drawable/profile"/>
+
+                                <View
+                                    android:layout_width="0.1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@color/dark_gray" />
+
+                                <TextView
+                                    android:id="@+id/namamitrasakit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_toRightOf="@+id/countrycode"
+                                    android:background="@color/transparent"
+                                    android:hint="@string/namakaryawan"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:paddingLeft="16dp"
+                                    android:textColor="@color/black"
+                                    android:textColorHint="@color/gray"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/round_edittext_background">
+
+                                <ImageView
+                                    android:id="@+id/imgphonesakit"
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginTop="10dp"
+                                    android:textAlignment="center"/>
+
+                                <View
+                                    android:layout_width="0.1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@color/dark_gray" />
+
+                                <TextView
+                                    android:id="@+id/phonemitrasakit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_toRightOf="@+id/countrycode"
+                                    android:background="@color/transparent"
+                                    android:hint="@string/namakaryawan"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:paddingLeft="16dp"
+                                    android:textColor="@color/black"
+                                    android:textColorHint="@color/gray"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/round_edittext_background">
+
+                                <ImageView
+                                    android:id="@+id/imgketsakit"
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginTop="10dp"
+                                    android:textAlignment="center"/>
+
+                                <View
+                                    android:layout_width="0.1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@color/dark_gray" />
+
+                                <EditText
+                                    android:id="@+id/keteranganmitrasakit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_toRightOf="@+id/countrycode"
+                                    android:background="@color/transparent"
+                                    android:hint="@string/keterangan"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:textColor="@color/black"
+                                    android:textColorHint="@color/gray"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/round_edittext_background">
+
+                                <ImageView
+                                    android:id="@+id/imglokasi"
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginTop="10dp"
+                                    android:textAlignment="center"
+                                    app:tint="@color/black"/>
+
+                                <View
+                                    android:layout_width="0.1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@color/dark_gray" />
+
+                                <TextView
+                                    android:id="@+id/lokasimitrasakit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_toRightOf="@+id/countrycode"
+                                    android:background="@color/transparent"
+                                    android:hint="@string/lokasikaryawan"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:textColor="@color/black"
+                                    android:textColorHint="@color/gray"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/round_edittext_background">
+
+                                <ImageView
+                                    android:id="@+id/imgdate"
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginTop="10dp"
+                                    android:textAlignment="center"
+                                    app:tint="@color/black"/>
+
+                                <View
+                                    android:layout_width="0.1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@color/dark_gray" />
+
+                                <TextView
+                                    android:id="@+id/tanggalmitrasakit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_toRightOf="@+id/countrycode"
+                                    android:background="@color/transparent"
+                                    android:maxLines="1"
+                                    android:hint="@string/tanggal"
+                                    android:textColor="@color/black"
+                                    android:textColorHint="@color/gray"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/round_edittext_background">
+
+                                <ImageView
+                                    android:id="@+id/waktulokasi"
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginTop="10dp"
+                                    android:textAlignment="center"
+                                    app:tint="@color/black"/>
+
+                                <View
+                                    android:layout_width="0.1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@color/dark_gray" />
+
+                                <TextView
+                                    android:id="@+id/waktumitrasakit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_toRightOf="@+id/countrycode"
+                                    android:background="@color/transparent"
+                                    android:hint="@string/waktu"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:textColor="@color/black"
+                                    android:textColorHint="@color/gray"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/round_edittext_background">
+
+                                <ImageView
+                                    android:id="@+id/imgstatussakit"
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginTop="10dp"
+                                    android:textAlignment="center"/>
+
+                                <View
+                                    android:layout_width="0.1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@color/dark_gray" />
+
+                                <TextView
+                                    android:id="@+id/karyawanstatussakit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_toRightOf="@+id/countrycode"
+                                    android:background="@color/transparent"
+                                    android:hint="@string/status_karyawan"
+                                    android:paddingLeft="16dp"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:textColor="@color/black"
+                                    android:textColorHint="@color/gray"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <Button
+                                android:id="@+id/submitsakit"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginRight="20dp"
+                                android:background="@drawable/button_round_1"
+                                android:text="@string/sakit"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+</FrameLayout>
