@@ -160,6 +160,9 @@
     <string name="profileku">ProfilekKu</string>
     <string name="biodata_diri">BIODATA DIRI</string>
     <string name="idcardkaryawan">Nomor Induk Pegawai</string>
+    <string name="setting">Pengaturan</string>
+    <string name="editbiodata">Edit Profile</string>
+    <string name="dataAbsen">Data Absensi</string>
     <string-array name="jender">
         <item>Pilih Jenis Kelamin</item>
         <item>Laki Laki</item>

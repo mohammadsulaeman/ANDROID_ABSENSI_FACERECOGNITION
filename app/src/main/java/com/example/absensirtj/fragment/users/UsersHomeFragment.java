@@ -25,6 +25,7 @@ import com.example.absensirtj.absen.PerijinanFragment;
 import com.example.absensirtj.absen.PulangFragment;
 import com.example.absensirtj.absen.SakitFragment;
 import com.example.absensirtj.constants.BaseApp;
+import com.example.absensirtj.constants.Constant;
 import com.example.absensirtj.databinding.FragmentUsersHomeBinding;
 import com.example.absensirtj.face.admin.AdminFaceRecogActivity;
 import com.example.absensirtj.fragment.admin.AdminProfileFragment;
@@ -61,10 +62,14 @@ public class UsersHomeFragment extends Fragment {
         binding = FragmentUsersHomeBinding.inflate(inflater,container,false);
         context = getContext();
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        DataKaryawan();
+        //DataKaryawan();
         User user = BaseApp.getInstance(context).getLoginUser();
         binding.namaKaryawanHomeUser.setText(user.getName());
         binding.statusKaryawanUser.setText(user.getStatus());
+        PicassoTrustAll.getInstance(context)
+                .load(Constant.IMAGESKARYAWAN + user.getFoto_karyawan())
+                .resize(210,210)
+                .into(binding.profileKaryawanUser);
         //pengaturan waktu
         String[] parsedpagi = "04:00".split(":");
         String[] parsedsiang = "11:00".split(":");

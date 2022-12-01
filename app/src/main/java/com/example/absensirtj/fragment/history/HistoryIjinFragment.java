@@ -17,10 +17,12 @@ import android.widget.Toast;
 import com.example.absensirtj.R;
 import com.example.absensirtj.activity.admin.AdminActivity;
 import com.example.absensirtj.activity.users.UsersActivity;
+import com.example.absensirtj.constants.BaseApp;
 import com.example.absensirtj.constants.Constant;
 import com.example.absensirtj.databinding.FragmentHistoryIjinBinding;
 import com.example.absensirtj.json.HIstoryIjinRequestJson;
 import com.example.absensirtj.json.ResponseJson;
+import com.example.absensirtj.models.User;
 import com.example.absensirtj.utils.PicassoTrustAll;
 import com.example.absensirtj.utils.api.ServiceGenerator;
 import com.example.absensirtj.utils.api.service.KaryawanService;
@@ -55,10 +57,11 @@ public class HistoryIjinFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentHistoryIjinBinding.inflate(inflater,container,false);
         context = getContext();
+        User user = BaseApp.getInstance(context).getLoginUser();
         binding.backHomeHistoryIjin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.statusijinhis.equals("Karyawan Tetap")){
+                if (user.getStatus().equals("Karyawan Tetap")){
                     Intent admin = new Intent(context, AdminActivity.class);
                     startActivity(admin);
                 }else{
@@ -68,44 +71,11 @@ public class HistoryIjinFragment extends Fragment {
             }
         });
         ijinRef = FirebaseDatabase.getInstance().getReference().child("Perijinan");
-        dataPerijinan();
+
 
         FontDrawable drawableBack = new FontDrawable(context,R.string.fa_arrow_left_solid,true,false);
         drawableBack.setTextColor(ContextCompat.getColor(context,R.color.gray));
         binding.backHomeHistoryIjin.setImageDrawable(drawableBack);
         return binding.getRoot();
-    }
-    private void dataPerijinan() {
-        ijinRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull @NotNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
-                            String nama = dataSnapshot.child("namaijin").getValue().toString();
-                            String keterangan = dataSnapshot.child("keteranganijin").getValue().toString();
-                            String status = dataSnapshot.child("statusijin").getValue().toString();
-                            String tanggal = dataSnapshot.child("tanggalijin").getValue().toString();
-                            String waktu = dataSnapshot.child("waktuijin").getValue().toString();
-                            String lokasi = dataSnapshot.child("lokasiijin").getValue().toString();
-                            String imageijin = dataSnapshot.child("imageijin").getValue().toString();
-                            PicassoTrustAll.getInstance(context)
-                                    .load( imageijin)
-                                    .into(binding.profileImagehistijin);
-                            binding.namaijinhis.setText( nama);
-                            binding.keteranganijinhis.setText(keterangan);
-                            binding.statusijinhis.setText(status);
-                            binding.tanggalijinhis.setText(tanggal);
-                            binding.waktuijinhis.setText(waktu);
-                            binding.lokasijinhis.setText(lokasi);
-                        }else{
-                            Toast.makeText(context, "gagal", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError databaseError) {
-                        Toast.makeText(context, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 }

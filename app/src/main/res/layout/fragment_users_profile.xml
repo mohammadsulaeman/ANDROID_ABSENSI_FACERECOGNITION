@@ -90,9 +90,74 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/nav_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/nav_atas"
+            android:layout_marginTop="20dp"
+            app:contentPadding="10dp"
+            app:cardCornerRadius="25dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical"
+                android:layout_marginRight="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setting"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_below="@id/info_home"
+                        android:src="@drawable/mapbox_info_icon_default" />
+                    <TextView
+                        android:id="@+id/aboutKlikEditBiodataUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/editbiodata"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_below="@id/info_home"
+                        android:src="@drawable/mapbox_info_icon_default" />
+                    <TextView
+                        android:id="@+id/supportKlikDataAbsenUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/dataAbsen"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nav_setting"
             android:layout_marginTop="20dp"
             app:contentPadding="10dp"
             app:cardCornerRadius="25dp"

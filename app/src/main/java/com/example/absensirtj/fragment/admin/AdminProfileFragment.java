@@ -17,6 +17,7 @@ import com.example.absensirtj.R;
 import com.example.absensirtj.activity.admin.AdminAboutActivity;
 import com.example.absensirtj.activity.admin.AdminSupportActivity;
 import com.example.absensirtj.constants.BaseApp;
+import com.example.absensirtj.constants.Constant;
 import com.example.absensirtj.databinding.FragmentAdminHomeBinding;
 import com.example.absensirtj.databinding.FragmentAdminProfileBinding;
 import com.example.absensirtj.models.User;
@@ -47,10 +48,12 @@ public class AdminProfileFragment extends Fragment {
         binding = FragmentAdminProfileBinding.inflate(inflater,container,false);
         context = getContext();
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        DataKaryawan();
         User user = BaseApp.getInstance(context).getLoginUser();
         binding.namaKaryawanHomeProfile.setText(user.getName());
         binding.statusKaryawanHomeProfile.setText(user.getStatus());
+        PicassoTrustAll.getInstance(context)
+                .load(Constant.IMAGESKARYAWAN + user.getFoto_karyawan())
+                .into(binding.profileHomeadmin);
 
         FontDrawable drawableBack = new FontDrawable(context,R.string.fa_arrow_left_solid,true,false);
         drawableBack.setTextColor(ContextCompat.getColor(context,R.color.black));
@@ -70,30 +73,13 @@ public class AdminProfileFragment extends Fragment {
                 startActivity(adminsupport);
             }
         });
+        binding.aboutKlikEditBiodataAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         return binding.getRoot();
     }
-    private void DataKaryawan() {
-        userRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull @NotNull DataSnapshot dataSnapshot) {
 
-                        if ((dataSnapshot.exists())){
-                            String namaImage = dataSnapshot.child("image").getValue().toString();
-                            PicassoTrustAll.getInstance(context)
-                                    .load(namaImage)
-                                    .into(binding.profileHomeadmin);
-                        }else
-                        {
-                            Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError databaseError) {
-                        databaseError.getMessage();
-                        Toast.makeText(context, "error!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
 }
