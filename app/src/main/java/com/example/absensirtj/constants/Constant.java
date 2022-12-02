@@ -1,7 +1,7 @@
 package com.example.absensirtj.constants;
 
 public class Constant {
-    private static final String BASE_URL = "http://192.168.1.15/absensi/";
+    private static final String BASE_URL = "http://ipaddress/absensi/";
     public static final String URL_WEBSITEPT = "https://rtj.co.id/";
     public static final String URL_GITHUB = "https://github.com/mohammadsulaeman";
     public static final String URL_PORTFOLIOSUPORT = "https://mohammadsulaeman.github.io/";

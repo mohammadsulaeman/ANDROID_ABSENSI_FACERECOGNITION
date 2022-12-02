@@ -28,9 +28,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.example.absensirtj.activity.admin.AdminActivity;
+import com.example.absensirtj.activity.users.UsersActivity;
+import com.example.absensirtj.constants.BaseApp;
 import com.example.absensirtj.constants.Constant;
 import com.example.absensirtj.json.RegisterRequestJson;
 import com.example.absensirtj.json.ResponseJson;
+import com.example.absensirtj.models.User;
+import com.example.absensirtj.utils.SharedPrefrence;
 import com.example.absensirtj.utils.api.ServiceGenerator;
 import com.example.absensirtj.utils.api.service.KaryawanService;
 import com.google.android.gms.tasks.Continuation;
@@ -115,6 +120,7 @@ public class RegisterActivity extends AppCompatActivity  {
     private StorageReference profileRef;
     String latitude, longitude;
     private final int DESTINATION_ID = 1;
+    private SharedPrefrence prefrence;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,6 +129,7 @@ public class RegisterActivity extends AppCompatActivity  {
 
         //locaksi
 
+        prefrence = SharedPrefrence.getInstance(getApplicationContext());
         realm = Realm.getDefaultInstance();
         fbAuth = FirebaseAuth.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -403,7 +410,7 @@ public class RegisterActivity extends AppCompatActivity  {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == PicklocationActivity.LOCATION_PICKER_ID) {
+          if (requestCode == PicklocationActivity.LOCATION_PICKER_ID) {
                 String addressset = data.getStringExtra(PicklocationActivity.LOCATION_NAME);
                 LatLng latLng = data.getParcelableExtra(PicklocationActivity.LOCATION_LATLNG);
                 alamat.setText(addressset);
@@ -435,6 +442,7 @@ public class RegisterActivity extends AppCompatActivity  {
             }
         }
     }
+
 
     //register dan json
     public String getStringImage(Bitmap bmp) {
@@ -780,12 +788,14 @@ public class RegisterActivity extends AppCompatActivity  {
                 if (response.isSuccessful()){
                     if (Objects.requireNonNull(response.body()).getMessage().equalsIgnoreCase("next")){
                         Nextbtn(viewFlipper);
+                        prefrence.setNIKKaryawan(idcard.getText().toString());
                     }else if (response.body().getMessage().equalsIgnoreCase("success")){
                         Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
                         notif(response.body().getData());
+                        prefrence.setNIKKaryawan(idcard.getText().toString());
                     }else
                     {
                         notif(response.body().getMessage());

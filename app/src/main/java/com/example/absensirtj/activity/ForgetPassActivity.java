@@ -11,10 +11,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.absensirtj.R;
+import com.example.absensirtj.constants.BaseApp;
 import com.example.absensirtj.databinding.ActivityForgetPassBinding;
 import com.example.absensirtj.json.ForgotRequestJson;
 import com.example.absensirtj.json.ResponseJson;
+import com.example.absensirtj.models.User;
 import com.example.absensirtj.utils.NetworkUtils;
+import com.example.absensirtj.utils.SharedPrefrence;
 import com.example.absensirtj.utils.api.ServiceGenerator;
 import com.example.absensirtj.utils.api.service.KaryawanService;
 
@@ -25,12 +28,17 @@ import retrofit2.Response;
 
 public class ForgetPassActivity extends AppCompatActivity {
     ActivityForgetPassBinding binding;
+    SharedPrefrence prefrence;
+    String idcard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityForgetPassBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        prefrence = SharedPrefrence.getInstance(getApplicationContext());
+        idcard = prefrence.getNIKKARYAWAN();
+        System.out.println("IDCard = "+idcard);
         binding.backBtnLupa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +73,7 @@ public class ForgetPassActivity extends AppCompatActivity {
 
     private void upload() {
         ForgotRequestJson request = new ForgotRequestJson();
+        request.setIdcardkaryawan(idcard);
         request.setPassword(binding.editTextSandiBaru.getText().toString());
         KaryawanService service = ServiceGenerator.createService(KaryawanService.class,"admin","12345");
         service.forgot(request).enqueue(new Callback<ResponseJson>() {

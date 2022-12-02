@@ -8,6 +8,7 @@ public class SharedPrefrence {
     public static SharedPreferences myPrefs;
     public static SharedPreferences.Editor prefsEditor;
 
+    private static final String NIK_REGISTERED_KARYAWAN = "Nik_Karyawan";
     public static SharedPrefrence myObj;
 
     private SharedPrefrence() {
@@ -21,6 +22,16 @@ public class SharedPrefrence {
             prefsEditor = myPrefs.edit();
         }
         return myObj;
+    }
+
+    public void setNIKKaryawan(String nik) {
+        SharedPreferences.Editor editor = myPrefs.edit();
+        editor.putString(NIK_REGISTERED_KARYAWAN,nik);
+        editor.apply();
+    }
+
+    public  String getNIKKARYAWAN() {
+        return myPrefs.getString(NIK_REGISTERED_KARYAWAN,"");
     }
 
 }

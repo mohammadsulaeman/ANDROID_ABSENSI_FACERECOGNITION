@@ -15,10 +15,6 @@ public class User extends RealmObject implements Serializable
     @Expose
     private String id;
 
-    @SerializedName("karyawan_nik")
-    @Expose
-    private String nik;
-
     @SerializedName("karyawan_name")
     @Expose
     private String name;
@@ -79,6 +75,11 @@ public class User extends RealmObject implements Serializable
     @Expose
     private String lokasi;
 
+    @SerializedName("karyawan_idcard")
+    @Expose
+    private String idcardkaryawan;
+
+
     public String getId() {
         return id;
     }
@@ -87,13 +88,6 @@ public class User extends RealmObject implements Serializable
         this.id = id;
     }
 
-    public String getNik() {
-        return nik;
-    }
-
-    public void setNik(String nik) {
-        this.nik = nik;
-    }
 
     public String getName() {
         return name;
@@ -213,5 +207,13 @@ public class User extends RealmObject implements Serializable
 
     public void setLokasi(String lokasi) {
         this.lokasi = lokasi;
+    }
+
+    public String getIdcardkaryawan() {
+        return idcardkaryawan;
+    }
+
+    public void setIdcardkaryawan(String idcardkaryawan) {
+        this.idcardkaryawan = idcardkaryawan;
     }
 }
