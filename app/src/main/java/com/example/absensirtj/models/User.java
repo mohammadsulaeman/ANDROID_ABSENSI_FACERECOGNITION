@@ -75,9 +75,6 @@ public class User extends RealmObject implements Serializable
     @Expose
     private String lokasi;
 
-    @SerializedName("karyawan_idcard")
-    @Expose
-    private String idcardkaryawan;
 
 
     public String getId() {
@@ -209,11 +206,5 @@ public class User extends RealmObject implements Serializable
         this.lokasi = lokasi;
     }
 
-    public String getIdcardkaryawan() {
-        return idcardkaryawan;
-    }
 
-    public void setIdcardkaryawan(String idcardkaryawan) {
-        this.idcardkaryawan = idcardkaryawan;
-    }
 }
